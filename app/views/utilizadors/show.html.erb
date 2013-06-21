@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @utilizador.nome %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @utilizador.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @utilizador.email %>
+</p>
+
+<p>
+  <b>Estatuto:</b>
+  <%= @utilizador.estatuto %>
+</p>
+
+<p>
+  <b>Grupo:</b>
+  <%= Grupo.find(@utilizador.grupo_id).nome %>
+</p>
+
+<p align="center">
+<!% if current_utilizador.estatuto == "Administrador" || @utilizador.id == current_utilizador.id %>
+  <%= link_to 'Editar', edit_utilizador_path(@utilizador) %> 
+<!% end %>
+<%= link_to 'Retroceder', utilizadors_path %>
+<p>

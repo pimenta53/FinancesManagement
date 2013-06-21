@@ -1,0 +1,30 @@
+<%= form_for(@utilizador) do |f| %>
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome%>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username%>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label "Grupo" %>
+    <%= collection_select(:utilizador, :grupo_id, Grupo.all, :id, :nome) %>
+  </div>
+  <div>
+    <%= f.label :estatuto %>
+    <%= select(:utilizador, :estatuto,["Administrador","Director"]) %>
+  </div>
+	<br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

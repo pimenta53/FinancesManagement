@@ -1,0 +1,43 @@
+<h1>Receitas/Despesas</h1>
+
+<h2>Caixa</h2>
+
+<b>Total de compras: </b>
+<%= @total_compras %> €
+</p>
+<b>Total de vendas: </b>
+<%= @total_vendas %> €
+</p>
+
+<h2>Orcamentos</h2>
+
+<b>Total de gastos segundo os Orçamentos: </b>
+<%= @total_orcamento %> €
+</p>
+
+<h2>Patrocínios</h2>
+
+<b> Total de receitas de Patrocínios: </b>
+<%= @total_patrocinio %> €
+</p>
+
+<h1>Grupos &amp Utilizadores</h1>
+
+<% @grupo.each do |g| %>
+	<h2><%= g.nome %></h2>
+	<b>Número de utilizadores: </b>
+	<%= g.utilizadors.count %> (Administradores - <%= g.utilizadors.find_all_by_estatuto("Administrador").count %> e 
+	 							Directores - <%= g.utilizadors.find_all_by_estatuto("Director").count %>)
+	</p>
+	<b>Número de itens em Caixa: </b>
+	<% @ids = Utilizador.select(:id).find_all_by_grupo_id(g.id)%>
+	<%= Caixa.find_all_by_utilizador_id(@ids).count %>
+	</p>
+	<b>Número de Orçamentos propostos: </b>
+	<%= Orcamento.find_all_by_grupo_id(g.id).count %>
+	</p>
+<% end %>
+
+<p align="center">
+<%= link_to "Gerar Relatório de Contas", :controller => "estatisticas", :action => "relatorio", :format=>:pdf %>
+</p>

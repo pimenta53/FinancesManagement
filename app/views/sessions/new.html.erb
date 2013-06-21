@@ -1,0 +1,18 @@
+<% if !signed_in? %>
+  <h1>Login</h1>
+  <%= form_for(:session, :url => sessions_path) do |f| %>
+    <%= flash[:notice]%>
+    <div class="field">
+      <%= f.label :username %><br/>
+      <%= f.text_field :username %>
+    </div>
+    <div class="field">
+      <%= f.label :password %></br>
+      <%= f.password_field :password %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Login",  :class => 'signup_button round' %>
+    </div>
+    <%= flash[:error] %>
+  <% end %>
+<% end %>

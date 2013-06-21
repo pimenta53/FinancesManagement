@@ -1,0 +1,39 @@
+<h1 align="center">Orcamentos</h1>
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Novo Orçamento', new_orcamento_path, :class => 'signup_button round' %>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Descricao</th>
+    <th>Valor</th>
+    <th>Data</th>
+    <th>Estado</th>
+    <th>Grupo</th>
+  </tr>
+
+<% @orcamentos.each do |orcamento| %>
+  <tr>
+    <td><%= orcamento.nome %></td>
+    <td><%= orcamento.descricao %></td>
+    <td><%= orcamento.valor %> €</td>
+    <td><%= orcamento.data %></td>
+    <% if (orcamento.actual == true) %>
+      <td>Actualizado</td>
+    <% else %>
+      <td>Desactualizado</td>
+    <% end %>
+    <% if Grupo.find_by_id(orcamento.grupo_id).nil? %>
+	<td>Inexistente</td>
+    <% else %>
+    <td><%= Grupo.find(orcamento.grupo_id).nome %></td>
+    <% end %>
+    <td><%= link_to image_tag("search.png", :border=>0), orcamento %></td>
+    <td><%= link_to image_tag("edit.png", :border=>0), edit_orcamento_path(orcamento) %></td>
+    <% if estatuto_admin? %>
+      <td><%= link_to image_tag("destroy.png", :border=>0), orcamento, confirm: 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+

@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @sub_orcamento.descricao %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @sub_orcamento.valor %> €
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @sub_orcamento.estado %>
+</p>
+
+<p>
+  <b>Grupo:</b>
+	<% if Orcamento.find_by_id(@sub_orcamento.orcamento).nil? || Grupo.find_by_id(Orcamento.find(@sub_orcamento.orcamento).grupo).nil? %>
+	Inexistente
+	<% else %>
+  	<%= Grupo.find(Orcamento.find(@sub_orcamento.orcamento).grupo).nome %>
+	<% end %>
+</p>
+
+<p>
+  <b>Utilizador:</b>
+	<% if Utilizador.find_by_id(@sub_orcamento.utilizador).nil? %>
+	Inexistente
+	<% else %>
+  <%= Utilizador.find(@sub_orcamento.utilizador).nome %>
+	<% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_orcamento_sub_orcamento_path(@sub_orcamento.orcamento, @sub_orcamento) %> |
+<%= link_to 'Back', orcamento_path(@sub_orcamento.orcamento) %>

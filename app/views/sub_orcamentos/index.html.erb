@@ -1,0 +1,28 @@
+<h1>Listing sub_orcamentos</h1>
+
+<table>
+  <tr>
+    <th>Descricao</th>
+    <th>Valor</th>
+    <th>Estado</th>
+    <th>Orcamento</th>
+    <th>Utilizador</th>
+  </tr>
+
+<% @sub_orcamentos.each do |sub_orcamento| %>
+  <tr>
+    <td><%= sub_orcamento.descricao %></td>
+    <td><%= sub_orcamento.valor %></td>
+    <td><%= sub_orcamento.estado %></td>
+    <td><%= sub_orcamento.orcamento %></td>
+    <td><%= sub_orcamento.utilizador %></td>
+    <td><%= link_to image_tag("search.png", :border=>0), sub_orcamento %></td>
+    <td><%= link_to link_to image_tag("edit.png", :border=>0), edit_sub_orcamento_path(sub_orcamento) %></td>
+    <td><%= link_to image_tag("destroy.png", :border=>0), sub_orcamento, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sub orcamento', new_sub_orcamento_path %>

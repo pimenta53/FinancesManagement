@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @caixa.nome %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @caixa.descricao %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @caixa.valor %> €
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @caixa.estado %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @caixa.data %>
+</p>
+
+<p>
+<b>Utilizador:</b>
+<% if Utilizador.find_by_id(@caixa.utilizador_id).nil? %>
+  Inexistente
+<% else %>
+  <%= Utilizador.find(@caixa.utilizador_id).nome %>
+<% end %>
+</p>
+
+<p align="center">
+<%if current_utilizador.id == @caixa.utilizador_id %>
+  <%= link_to 'Editar', edit_caixa_path(@caixa) %> |
+<% end %>
+<%= link_to 'Retroceder', caixas_path %>
+</p>

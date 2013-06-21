@@ -1,0 +1,32 @@
+<h1 align="center">Lista de Utilizadores</h1>
+<p id="notice"><%= notice %></p>
+
+<% if current_utilizador.estatuto == "Administrador" %>
+  <%= link_to 'Novo Utilizador', new_utilizador_path, :class => 'signup_button round' %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Estatuto</th>
+    <th>Grupo</th>
+   </tr>
+
+<% @utilizadors.each do |utilizador| %>
+  <tr>
+    <td><%= utilizador.nome %></td>
+    <td><%= utilizador.username %></td>
+    <td><%= utilizador.email %></td>
+    <td><%= utilizador.estatuto %></td>
+    <td><%= Grupo.find(utilizador.grupo_id).nome %></td>
+    <td><%= link_to image_tag("search.png", :border=>0), utilizador %></td>
+    <% if (current_utilizador.username == utilizador.username || current_utilizador.estatuto == "Administrador") %>    
+      <td><%= link_to image_tag("edit.png", :border=>0), edit_utilizador_path(utilizador) %></td>
+      <td><%= link_to image_tag("destroy.png", :border=>0), utilizador, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+

@@ -1,0 +1,37 @@
+<h1 align="center">Registos de caixa</h1>
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Novo Registo', new_caixa_path, :class => 'signup_button round' %>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Descrição</th>
+    <th>Valor</th>
+    <th>Tipo</th>
+    <th>Data</th>
+    <th>Utilizador</th>
+  </tr>
+
+<% @caixas.each do |caixa| %>
+  <tr>
+    <td><%= caixa.nome %></td>
+    <td><%= caixa.descricao %></td>
+    <td><%= caixa.valor %> €</td>
+    <td><%= caixa.estado %></td>
+    <td><%= caixa.data %></td>
+    <% if Utilizador.find_by_id(caixa.utilizador_id).nil? %>
+      <td> Inexistente </td>
+    <% else %>
+      <td><%= Utilizador.find(caixa.utilizador_id).nome %></td>
+    <% end %>
+    <td><%= link_to image_tag("search.png", :border=>0), caixa %></td>
+    <% if caixa.utilizador_id == current_utilizador.id %>
+      <td><%= link_to image_tag("edit.png", :border=>0), edit_caixa_path(caixa) %></td>
+    <% end %>
+    <% if caixa.utilizador_id == current_utilizador.id || estatuto_admin? %>
+      <td><%= link_to image_tag("destroy.png", :border=>0), caixa, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+

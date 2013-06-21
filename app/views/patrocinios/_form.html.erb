@@ -1,0 +1,45 @@
+<%= form_for @patrocinio, :html => {:multipart => true}  do |f| %>
+  <% if @patrocinio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patrocinio.errors.count, "error") %> prohibited this patrocinio from being saved:</h2>
+
+      <ul>
+      <% @patrocinio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label "Descrição" %><br />
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :valor %><br />
+    <%= f.text_field :valor %> €
+  </div>
+  <div class="field">
+    <%= f.label "Data de Início" %><br />
+    <%= f.date_select :datainicio %>
+  </div>
+  <div class="field">
+    <%= f.label "Data Final" %><br />
+    <%= f.date_select :datafim %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br/>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label "Logotipo" %><br/>
+    <%= f.file_field :photo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

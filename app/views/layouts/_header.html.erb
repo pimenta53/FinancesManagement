@@ -1,0 +1,10 @@
+<header>
+  <%= image_tag("logo1.png",:size=> "150x50", :alt => "GF Núcleos ", :class => "round") %>
+  <nav class="round">
+    <ul>
+      <li><%= link_to "Home", caixas_path %></li>
+      <li><%= link_to "Ajuda", '#' %></li>
+      <li><%= link_to "Sair ", signout_path, :method => :delete %></li>
+    </ul>
+  </nav>
+</header>

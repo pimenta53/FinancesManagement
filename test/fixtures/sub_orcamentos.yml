@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descricao: MyString
+  valor: 1.5
+  estado: MyString
+  orcamento: 
+  utilizador: 
+
+two:
+  descricao: MyString
+  valor: 1.5
+  estado: MyString
+  orcamento: 
+  utilizador: 

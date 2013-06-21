@@ -1,0 +1,17 @@
+o: ActiveSupport::Cache::Entry	:@compressedF:@expires_in0:@created_atf1330907646.742453:@value{I"
+class:EFI"StaticAsset;
+FI"id;
+F"%b0b78560bbd6660aa39677b07c9a017fI"logical_path;
+FI"destroy.png;
+TI"pathname;
+FI"($root/app/assets/images/destroy.png;
+FI"content_type;
+FI"image/png;
+FI"
+mtime;
+FI"2012-03-05T00:22:11+00:00;
+FI"length;
+FI"	1212;
+FI"digest;
+F"%37597be003c36077048e2f03506d4d54I"_version;
+F"%46dde6621c301f4928e3b34efee9e3b5

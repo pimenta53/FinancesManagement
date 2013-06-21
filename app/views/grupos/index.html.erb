@@ -1,0 +1,25 @@
+<h1 align="center">Grupos de utilizadores</h1>
+<p id="notice"><%= notice %></p>
+
+<% if estatuto_admin? %>
+  <%= link_to 'Novo Grupo', new_grupo_path, :class => 'signup_button round' %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Descricao</th>
+  </tr>
+
+<% @grupos.each do |grupo| %>
+  <tr>
+    <td><%= grupo.nome %></td>
+    <td><%= grupo.descricao %></td>
+    <% if estatuto_admin? %>
+      <td><%= link_to image_tag("edit.png", :border=>0), edit_grupo_path(grupo) %></td>
+      <td><%= link_to image_tag("destroy.png", :border=>0), grupo, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+

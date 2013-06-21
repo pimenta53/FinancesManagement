@@ -1,0 +1,17 @@
+<%= form_for([@orcamento, @sub_orcamento]) do |f| %>
+  <div class="field">
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :valor %><br />
+    <%= f.text_field :valor %> €
+  </div>
+  <div class="field">
+  <%= f.label :estado %>
+  <%= select(:sub_orcamento, :estado, ["Em Espera","Aceite","Rejeitado"], {}, :disabled => !estatuto_admin?) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

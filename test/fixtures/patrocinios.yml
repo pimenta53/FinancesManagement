@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  descricao: MyString
+  valor: 1.5
+  dataInicio: 2012-02-17
+  dataFim: 2012-02-17
+  utilizador: 
+
+two:
+  nome: MyString
+  descricao: MyString
+  valor: 1.5
+  dataInicio: 2012-02-17
+  dataFim: 2012-02-17
+  utilizador: 

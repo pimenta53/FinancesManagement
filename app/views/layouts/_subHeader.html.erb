@@ -1,0 +1,19 @@
+<subHeader>
+  <nav class="round">
+    <ul>
+      <% if signed_in? %>
+	 <li><%= link_to "Caixa ", caixas_path %></li>        
+        <li><%= link_to "Orçamentos ", orcamentos_path %></li>
+        <% if estatuto_admin? || grupo_drep? %>
+          <li><%= link_to "Patrocinios ", patrocinios_path %></li>
+        <% end %>
+        <% if estatuto_admin? %>
+          <li><%= link_to "Estatisticas ", estatisticas_path %>
+        <% end %>
+        <li><%= link_to "Grupos ", grupos_path %></li>
+	<li><%= link_to "Utilizadores ", utilizadors_path %></li>
+                
+	<% end %>
+    </ul>
+  </nav>
+</subHeader>

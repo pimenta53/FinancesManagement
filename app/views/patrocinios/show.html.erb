@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<% if @patrocinio.photo? %>
+<p>
+  <%= image_tag @patrocinio.photo.url (:small) %>
+</p>
+<% end %>
+
+<p>
+  <b>Nome:</b>
+  <%= @patrocinio.nome %>
+</p>
+
+<p>
+  <b>Descrição:</b>
+  <%= @patrocinio.descricao %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @patrocinio.valor %> €
+</p>
+
+<p>
+  <b>Link Oficial:</b>
+  <%= link_to @patrocinio.link, @patrocinio.link, :target => "_blank" %>
+</p>
+
+<p>
+  <b>Data de Início:</b>
+  <%= @patrocinio.datainicio %>
+</p>
+
+<p>
+  <b>Data Finaç:</b>
+  <%= @patrocinio.datafim %>
+</p>
+
+<p>
+<b>Utilizador:</b>
+<% if Utilizador.find_by_id(@patrocinio.utilizador_id).nil? %>
+  Inexistente
+<% else %>
+  <%= Utilizador.find(@patrocinio.utilizador_id).nome %>
+<% end %>
+</p>
+
+<p align="center">
+<% if grupo_drep? %>
+  <%= link_to 'Editar', edit_patrocinio_path(@patrocinio) %> |
+<% end %>
+<%= link_to 'Retroceder', patrocinios_path %>
+</p>

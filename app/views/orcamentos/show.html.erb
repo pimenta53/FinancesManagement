@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @orcamento.nome %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @orcamento.descricao %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @orcamento.valor %> € 
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @orcamento.data %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <% if @orcamento.actual == true %>
+    Actualizado
+  <% else %>
+    Desactualizado
+  <% end %>
+</p>
+
+<p>
+  <b>Grupo:</b>
+  <% if Grupo.find_by_id(@orcamento.grupo_id).nil? %>
+	Inexistente
+  <% else %>
+  	<%= Grupo.find(@orcamento.grupo_id).nome %>
+  <% end %>
+</p>
+
+</p>
+<%= link_to 'Novo item', new_orcamento_sub_orcamento_path(@orcamento),:class => 'signup_button round' %>
+<% if @orcamento.sub_orcamentos.count != 0 %>
+<h2 align="center">Lista de items</h2>
+
+
+<table>
+  <tr>
+    <th>Descricao</th>
+    <th>Valor</th>
+    <th>Estado</th>
+    <th>Utilizador</th>
+  </tr>
+  <% @orcamento.sub_orcamentos.each do |so| %>
+    <tr>
+      <td><%= so.descricao %></td>
+      <td><%= so.valor %> €</td>
+      <td><%= so.estado %></td>
+	<% if Utilizador.find_by_id(so.utilizador_id).nil? %>
+	<td> Inexistente </td>
+	<% else %>
+      <td><%= Utilizador.find(so.utilizador_id).nome %></td>
+	<% end %>
+      <td><%= link_to image_tag("search.png", :border=>0), orcamento_sub_orcamento_path(@orcamento,so) %></td>
+      <td><%= link_to image_tag("edit.png", :border=>0), edit_orcamento_sub_orcamento_path(@orcamento,so) %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
+
+
+<p align="center">
+<%= link_to 'Retroceder', orcamentos_path %>
+</p>
